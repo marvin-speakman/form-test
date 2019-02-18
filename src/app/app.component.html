@@ -1,12 +1,14 @@
 <div class="container">
-  <form novalidate  >
+  <h1>Deloitte Developer Test</h1>
+  <p>Totals are updated on blur </p>
+  <form>
     <div *ngFor="let item of this.groupItems" >
       <div class="row">
         <div class="col-sm">
           <label>{{ item.itemName }}</label>
         </div>
-        <div class="col-sm">
-          <input type="number" class="{{item.group}}" value="{{ item.itemAmount }}" [(ngModel)]="{{item.group}}"/>
+        <div class="col-sm" >
+          <div class="{{item.group}}" >{{ item.itemAmount }}</div>
         </div>
       </div>
     </div>
@@ -16,8 +18,8 @@
             <div class="col-sm">
                 <label>{{ gItem.listName }}</label>
             </div>
-            <div class="col-sm">
-                <input type="number" id="{{ gItem.listName }}" value="{{ gItem.totals }}"  (blur)="onBlurMethod(gItem.listName, $event)" ng-model-options="{ debounce: { default: 500, blur: 0 } }" ng-model="type_total"/>
+            <div class="col-sm" >
+                <input type="number" id="{{ gItem.listName }}" value="{{ gItem.totals }}"  (blur)="onBlurMethod(gItem.listName, $event)" ng-model-options="{ debounce: { default: 500, blur: 0 } }" maxlength="3" validate/>
             </div>
         </div>
     </div>
